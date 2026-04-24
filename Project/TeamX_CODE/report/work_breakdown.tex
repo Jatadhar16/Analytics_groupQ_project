@@ -1,0 +1,129 @@
+%% Work Breakdown Report — submit individually as x{student_number}.pdf
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{NCI MSc Data Analytics — Analytics Programming \& Data Visualisation}
+\rfoot{\thepage}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Student Work Breakdown Report}\\[8pt]
+  {\large Analytics Programming \& Data Visualisation}\\[4pt]
+  {\large National College of Ireland --- Semester 2, 2025/26}\\[12pt]
+  \rule{\textwidth}{0.5pt}
+\end{center}
+
+\vspace{12pt}
+
+\section*{Team Information}
+\begin{tabular}{ll}
+\textbf{Team Name:} & Team [X] \\
+\textbf{Project Title:} & Predicting Global Health Outcomes: A Multi-Source Analytics Pipeline \\
+\textbf{Submission Date:} & 3\textsuperscript{rd} May 2026 \\
+\end{tabular}
+
+\vspace{16pt}
+\section*{Team Members}
+\begin{tabular}{lll}
+\toprule
+\textbf{Name} & \textbf{Student Number} & \textbf{Primary Dataset} \\
+\midrule
+Vecha Jatadhar   & [Student Number] & WHO GHO API \\
+Pravalika Revelli & X25161261        & World Bank API \\
+Marla Srija       & X24295256        & Disease.sh API \\
+\bottomrule
+\end{tabular}
+
+\vspace{20pt}
+\section*{Detailed Contribution Breakdown}
+
+\begin{tabular}{>{\bfseries}p{4cm} p{10cm}}
+\toprule
+Component & Description of Contribution \\
+\midrule
+\multicolumn{2}{l}{\textbf{Vecha Jatadhar}} \\
+\midrule
+Data Collection & Designed and implemented \texttt{WHOCollector} class in
+  \texttt{src/data\_collection.py}; selected 10 WHO GHO indicators; implemented
+  retry logic for API resilience; collected 47,000+ records. \\
+MongoDB Storage & Implemented compound indexes and upsert logic for
+  \texttt{who\_health\_indicators} collection in
+  \texttt{src/mongodb\_handler.py}. \\
+ETL Pipeline & Led the \texttt{\_clean\_who()} transformation function;
+  contributed to \texttt{\_build\_wide\_profile()} integration logic. \\
+ML Models & Implemented K-Means clustering and PCA visualisation in
+  \texttt{src/ml\_models.py}; conducted Elbow method validation. \\
+Report & Wrote Sections I (Introduction), III-A-i (WHO dataset), III-C (ETL). \\
+Dashboard & Implemented World Map and Clustering dashboard pages. \\
+Presentation & Presented pipeline architecture and clustering results. \\
+\midrule
+\multicolumn{2}{l}{\textbf{Pravalika Revelli (X25161261)}} \\
+\midrule
+Data Collection & Designed and implemented \texttt{WorldBankCollector} class;
+  selected 10 World Bank indicators; handled API pagination. \\
+MongoDB Storage & Implemented upsert logic for \texttt{worldbank\_indicators}
+  collection; validated index uniqueness. \\
+ETL / PostgreSQL & Designed the full PostgreSQL schema (5 tables); implemented
+  \texttt{\_build\_dim\_country()} and World Bank cleaning logic;
+  managed SQLAlchemy loading. \\
+ML Models & Implemented Random Forest regressor with GridSearchCV;
+  conducted feature importance analysis. \\
+Report & Wrote Sections III-A-ii (World Bank dataset), III-B (pipeline arch.),
+  V-A (RQ1 results), V-D (evaluation table). \\
+Dashboard & Implemented Health Expenditure and ML Models dashboard pages. \\
+Presentation & Presented Random Forest results and feature importances. \\
+\midrule
+\multicolumn{2}{l}{\textbf{Marla Srija (X24295256)}} \\
+\midrule
+Data Collection & Designed and implemented \texttt{DiseaseCollector} class;
+  fetched country summaries and global historical data from disease.sh. \\
+MongoDB Storage & Implemented upsert logic for \texttt{disease\_statistics}
+  collection. \\
+ETL Pipeline & Implemented disease data cleaning and integration into
+  \texttt{analysis\_country\_profiles} table. \\
+ML Models & Implemented ARIMA time-series forecasting; conducted ADF
+  stationarity tests; implemented linear regression with hypothesis testing. \\
+Report & Wrote Sections II (Related Work), IV (Visualisation Methodology),
+  V-B \& V-C (RQ2 \& RQ3 results), VI (Conclusions). \\
+Dashboard & Designed and implemented COVID-19 and Time Series dashboard pages;
+  designed overall dashboard layout and CSS styling. \\
+Presentation & Presented COVID-19 analysis and ARIMA forecasts. \\
+\bottomrule
+\end{tabular}
+
+\vspace{20pt}
+\section*{Contribution Percentage Estimate}
+\begin{tabular}{lc}
+\toprule
+\textbf{Team Member} & \textbf{Estimated Contribution (\%)} \\
+\midrule
+Vecha Jatadhar    & 33\% \\
+Pravalika Revelli & 34\% \\
+Marla Srija       & 33\% \\
+\bottomrule
+\end{tabular}
+
+\vspace{16pt}
+\section*{Collaboration Statement}
+All team members participated in regular weekly meetings to review progress,
+resolve integration challenges, and discuss analytical findings. The project
+idea, research questions, and overall pipeline architecture were developed
+collaboratively during the first two team meetings. Integration of the three
+datasets into the \texttt{analysis\_country\_profiles} table was a joint effort.
+All team members reviewed and contributed to the final report before submission.
+
+\vspace{20pt}
+\noindent\textbf{Submitting Student:} \underline{\hspace{5cm}}
+\quad \textbf{Student Number:} \underline{\hspace{3cm}}
+
+\noindent\textbf{Date:} \underline{\hspace{4cm}}
+
+\end{document}

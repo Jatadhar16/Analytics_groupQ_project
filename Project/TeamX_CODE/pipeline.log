@@ -1,0 +1,44 @@
+2026-04-24 12:57:41,317 [INFO] pipeline - === Global Health Analytics Pipeline - START ===
+2026-04-24 12:57:41,318 [INFO] pipeline - Team: Vecha Jatadhar | Pravalika Revelli (X25161261) | Marla Srija (X24295256)
+2026-04-24 12:57:44,459 [INFO] pipeline - --- STEP 3: ETL Pipeline ---
+2026-04-24 12:57:44,479 [INFO] src.mongodb_handler - MongoDB indexes ensured
+2026-04-24 12:57:44,479 [INFO] src.mongodb_handler - Connected to MongoDB: mongodb://localhost:27017/ | DB: global_health_db
+2026-04-24 12:57:44,631 [INFO] src.etl_pipeline - PostgreSQL schema created / verified
+2026-04-24 12:57:44,632 [INFO] src.etl_pipeline - Extracting raw data from MongoDB …
+2026-04-24 12:57:44,812 [INFO] src.etl_pipeline - Extracted | WHO=19988 | WB=16158 | Disease=229
+2026-04-24 12:57:44,812 [INFO] src.etl_pipeline - Running transformation pipeline …
+2026-04-24 12:57:44,838 [INFO] src.etl_pipeline - WHO cleaned: 18764 rows
+2026-04-24 12:57:44,856 [INFO] src.etl_pipeline - World Bank cleaned: 15709 rows
+2026-04-24 12:57:44,860 [INFO] src.etl_pipeline - Disease cleaned: 229 rows
+2026-04-24 12:57:44,876 [INFO] src.etl_pipeline - dim_country: 276 countries
+2026-04-24 12:57:44,977 [INFO] src.etl_pipeline - Wide profile built: (276, 28)
+2026-04-24 12:57:44,978 [INFO] src.etl_pipeline - Transformation complete
+2026-04-24 12:57:44,978 [INFO] src.etl_pipeline - Loading into PostgreSQL …
+2026-04-24 12:57:45,080 [INFO] src.etl_pipeline - Loaded    276 rows → dim_country
+2026-04-24 12:57:47,019 [INFO] src.etl_pipeline - Loaded  17904 rows → fact_who_indicators
+2026-04-24 12:57:48,292 [INFO] src.etl_pipeline - Loaded  15709 rows → fact_wb_indicators
+2026-04-24 12:57:48,336 [INFO] src.etl_pipeline - Loaded    229 rows → fact_disease_stats
+2026-04-24 12:57:48,452 [INFO] src.etl_pipeline - Loaded    276 rows → analysis_country_profiles
+2026-04-24 12:57:48,453 [INFO] src.etl_pipeline - PostgreSQL load complete
+2026-04-24 12:57:48,455 [INFO] src.etl_pipeline - ETL pipeline finished successfully
+2026-04-24 12:57:48,471 [INFO] pipeline - Country profiles saved to data/processed/country_profiles.csv
+2026-04-24 12:57:49,440 [INFO] pipeline - --- STEP 4: Machine Learning ---
+2026-04-24 12:57:49,500 [INFO] src.ml_models - Loaded 276 country profiles from PostgreSQL
+2026-04-24 12:57:49,513 [INFO] src.ml_models - Running K-Means clustering
+2026-04-24 12:57:51,397 [INFO] src.ml_models - Clustering complete | 5 clusters
+2026-04-24 12:57:51,397 [INFO] src.ml_models - Training Random Forest
+2026-04-24 12:57:53,003 [INFO] src.ml_models - RF | R2=0.7508 | RMSE=3.5711
+2026-04-24 12:57:53,003 [INFO] src.ml_models - Running Linear Regression
+2026-04-24 12:57:53,039 [INFO] src.ml_models - LR | R2=0.7398 | RMSE=3.6486
+2026-04-24 12:57:53,039 [INFO] src.ml_models - Running ARIMA for IRL
+2026-04-24 12:57:53,404 [INFO] src.ml_models - ARIMA complete | AIC=52.28
+2026-04-24 12:57:53,406 [INFO] src.ml_models - Correlation analysis complete
+2026-04-24 12:57:53,512 [INFO] src.ml_models - Cluster labels persisted to PostgreSQL
+2026-04-24 12:57:53,522 [INFO] pipeline - Saved random_forest artefact -> data\processed\random_forest_results.pkl
+2026-04-24 12:57:53,523 [INFO] pipeline - Saved linear_regression artefact -> data\processed\linear_regression_results.pkl
+2026-04-24 12:57:53,525 [INFO] pipeline - Saved clustering artefact -> data\processed\clustering_results.pkl
+2026-04-24 12:57:53,530 [INFO] pipeline - Saved arima artefact -> data\processed\arima_results.pkl
+2026-04-24 12:57:53,531 [INFO] pipeline - Random Forest | R2=0.7508 | RMSE=3.5711 yrs | CV-R2=0.7100+/-0.0458
+2026-04-24 12:57:53,531 [INFO] pipeline - Linear Regression | R2=0.7398 | RMSE=3.6486 yrs
+2026-04-24 12:57:53,531 [INFO] pipeline - === Pipeline Complete ===
+2026-04-24 12:57:53,532 [INFO] pipeline - Next step: launch dashboard with: streamlit run dashboard/app.py

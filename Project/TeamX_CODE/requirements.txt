@@ -1,0 +1,30 @@
+# ── Core data science ────────────────────────────────────────
+numpy>=1.26.0
+pandas>=2.2.0
+scipy>=1.13.0
+
+# ── Machine learning ──────────────────────────────────────────
+scikit-learn>=1.4.0
+statsmodels>=0.14.0        # ARIMA, statistical tests
+
+# ── Databases ─────────────────────────────────────────────────
+pymongo>=4.7.0             # MongoDB driver
+psycopg2-binary>=2.9.9    # PostgreSQL driver
+sqlalchemy>=2.0.30         # ORM / query engine
+
+# ── Visualisation ─────────────────────────────────────────────
+plotly>=5.20.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+kaleido>=0.2.1             # Static image export for Plotly
+
+# ── Dashboard ─────────────────────────────────────────────────
+streamlit>=1.35.0
+
+# ── HTTP & API ────────────────────────────────────────────────
+requests>=2.31.0
+
+# ── Notebooks ─────────────────────────────────────────────────
+jupyter>=1.0.0
+ipykernel>=6.29.0
+nbformat>=5.10.0
