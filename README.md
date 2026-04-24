@@ -1,7 +1,7 @@
 # Global Health & Disease Analytics Pipeline
 
 **NCI MSc Data Analytics — Analytics Programming & Data Visualisation**  
-**Team Members:** Vecha Jatadhar | Pravalika Revelli (X25161261) | Marla Srija (X24295256)  
+**Team Members:** Vecha Jatadhar (X25161261) | Pravalika Revelli (X25135724) | Marla Srija (X24295256)  
 **Submission Deadline:** 3rd May 2026
 
 ---
